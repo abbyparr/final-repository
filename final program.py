@@ -35,6 +35,6 @@ train_passengers = FreqDist('train passengers')
 pedestrians = FreqDist('pedestrians')
 
 #analyze value 
-sns.displot(x = 'value', data = Border_Crossing_Entry_Data)
+sns.displot(x = 'value', data = border_data)
 
 

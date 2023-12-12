@@ -10,31 +10,31 @@ data = sns.load_dataset('border_data')
 
 Border_Crossing_Entry_Data.data.shape()
 
-#contrast state/port names
-sns.histplot(x = 'state', hue = 'port names', data = border_data)
-sns.lineplot(x = 'state', y = 'port names')
+#contrast border crossings/border
+sns.countplot(x='Border', data=border_data)
+plt.title('Number of Border Crossings by Border'
 
-#compare border location
-sns.distplot(x = 'border', data = border_data)
-#frequency of border location usage
-border1 = FreqDist('US-Mexico Border')
-border2 = FreqDist('US-Canada Border')
+#contrast border crossings/port name
+plt.figure(figsize=(20, 10))
+sns.barplot(x='Port_Name', y='Value', data=border_data)
+plt.title('Number of Crossings by Port')
+plt.xlabel('Port Name')
+plt.ylabel('Crossings')
+plt.xticks(rotation=90)
+plt.show()
 
-#compare date
-sns.histplot(x = 'date', hue = 'month', data = border_data)
-sns.lineplot(x = 'date', hue = 'month', data = border_data)
+#distribution of border crossing by measure
+fig, ax = plt.subplots(figsize=(15, 10))
+sns.boxplot(x='Measure', y='Value', data=border_data, ax=ax)
+plt.title('Distribution of Border Crossing Values by Measure')
+plt.xlabel('Measure')
+plt.ylabel('Value')
+plt.xticks(rotation=45) 
+plt.show()
 
-#analyze measure(type of transportation crossing)
-sns.distplot(x = 'measure', data = border_data)
-#frequency of measure(type of transportation crossing)
-trucks = FreqDist('trucks')
-trains = FreqDist('trains')
-bus_passengers = FreqDist('bus passengers')
-buses = FreqDist('buses')
-train_passengers = FreqDist('train passengers')
-pedestrians = FreqDist('pedestrians')
-
-#analyze value 
-sns.displot(x = 'value', data = border_data)
-
-
+#compare border crossing over time
+fig, ax = plt.subplots(figsize=(15, 10))
+sns.lineplot(x='Date', y='Value', data=border_data, ax=ax) 
+plt.title('Border Crossings Over Time')
+plt.xticks(rotation=90)
+plt.show()
